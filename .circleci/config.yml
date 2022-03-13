@@ -46,14 +46,16 @@ workflows:
           aws-access-key-id: ACCESS_KEY_ID
           aws-secret-access-key: SECRET_ACCESS_KEY
           create-repo: false
-          dockerfile: DockerFile
+          dockerfile: Dockerfile
           no-output-timeout: 20m
-          path: ./docker
+          path: ./
           profile-name: PROFILE
           region: AWS_REGION
           repo: ecrjsontest
+          skip-when-tags-exist: false
+          tag: 'latest,s3Reader'
           requires:
             - build-and-test
           filters:
             branches:
-              only: main
+              only: ecr-deployment-testing
