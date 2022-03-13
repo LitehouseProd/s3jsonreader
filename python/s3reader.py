@@ -10,14 +10,13 @@ def getLocation(url):
 def getAllkeys(info):
     print("get_all_keys?")
     for key, value in info.items():
-            yield key
-            print(key)
-            if key == 'message':
-                print("if")
-                print(info['message'])
-            elif isinstance(value, dict):
-                print("elif")
-                yield from getAllkeys(value)
+        print(key)
+        if key == 'message':
+            print("if")
+            print(value)
+        elif isinstance(value, dict):
+            print("elif")
+            yield from getAllkeys(value)
 
 def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
