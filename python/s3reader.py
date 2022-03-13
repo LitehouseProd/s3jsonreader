@@ -21,7 +21,7 @@ def getAllkeys(info):
 
 def input():
     try:
-        args = getopt.getopt(argv):
+        args = getopt.getopt(argv)
     except getopt.GetoptError:
         print('s3readert.py <S3 URI>')
     return args    
