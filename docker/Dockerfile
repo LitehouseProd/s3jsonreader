@@ -1,2 +1,3 @@
 FROM redhat/ubi8
-RUN yum install aws-cli
+RUN yum install aws-cli python3 -y
+
