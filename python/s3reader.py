@@ -20,15 +20,7 @@ def getAllkeys(info):
         elif isinstance(value, dict):
             return getAllkeys(value)
 
-def input(argv):
-    try:
-        args = getopt.getopt(argv, '',[] )
-    except getopt.GetoptError:
-        print('s3readert.py <S3 URI>')
-    return args    
-
-
-sourceFile = input(sys.argv[1:])
+sourceFile = sys.argv[1]
 sourceArray = getLocation(sourceFile)
 file = getFile(sourceArray[2], sourceArray[3])
 readFile(file)
