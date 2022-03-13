@@ -22,7 +22,11 @@ jobs:
           pip-dependency-file: requirements.txt 
       - run:
           name: Run tests
-          command: python3 ./python/s3reader.py
+          command:
+            aws configure set aws_access_key_id ACCESS_KEY_ID
+            aws configure set aws_secret_access_key SECRET_ACCESS_KEY
+            aws configure set default.region AWS_REGION
+            python3 ./python/s3reader.py
 
 
 workflows:
@@ -39,7 +43,7 @@ workflows:
           dockerfile: DockerFile
           no-output-timeout: 20m
           path: ./docker
-          profile-name: litehouse
+          profile-name: PROFILE
           region: AWS_REGION
           repo: ecrjsontest
           requires:
