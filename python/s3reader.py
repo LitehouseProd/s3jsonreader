@@ -18,8 +18,16 @@ def getAllkeys(info):
             print(value)
         elif isinstance(value, dict):
             return getAllkeys(value)
-        
 
-sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
+def input():
+    try:
+        args = getopt.getopt(argv):
+    except getopt.GetoptError:
+        print('s3readert.py <S3 URI>')
+    return args    
+
+
+sourceFile = input()
+sourceArray = getLocation(sourceFile)
 file = getFile(sourceArray[2], sourceArray[3])
 readFile(file)
