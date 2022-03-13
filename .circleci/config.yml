@@ -50,6 +50,7 @@ workflows:
           profile-name: PROFILE
           region: AWS_REGION
           repo: ecrjsontest
+          skip-when-tags-exist: false
           tag: 'latest,s3Reader'
           requires:
             - build-and-test
