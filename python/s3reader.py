@@ -9,6 +9,7 @@ def getFile(Bucket, file):
 
 def getLocation(url):
     source=url.split('/')
-    print(source)
+    return source
 
-getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test.json')
+sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test.json')
+getFile(sourceArray[2], sourceArray[3])
