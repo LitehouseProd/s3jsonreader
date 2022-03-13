@@ -46,7 +46,7 @@ workflows:
           create-repo: false
           dockerfile: Dockerfile
           no-output-timeout: 20m
-          path: ./docker
+          path: ./
           profile-name: PROFILE
           region: AWS_REGION
           repo: ecrjsontest
