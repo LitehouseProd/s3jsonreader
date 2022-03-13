@@ -11,6 +11,5 @@ USER root
 RUN chmod +X entrypoint.sh
 RUN chmod 777 entrypoint.sh
 RUN chown circleci. entrypoint.sh
-USER circleci
 
 ENTRYPOINT ["./entrypoint.sh"]
