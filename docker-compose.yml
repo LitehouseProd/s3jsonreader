@@ -2,7 +2,7 @@ version: '3.0'
 services:
   s3Reader:
     container_name: "jsonReaderWill"
-    image: 576159180057.dkr.ecr.us-east-1.amazonaws.com/ecrjsontest@sha256:2c3acd97efab1b6d8837c451d64f06f5969f2027685bb8f54ca7fdae44ac2dc4
+    image: 576159180057.dkr.ecr.us-east-1.amazonaws.com/ecrjsontest:latest
     environment:
       - ACCESS_KEY_ID= $aws_access_key_id
       - SECRET_ACCESS_KEY= $aws_secret_access_key
