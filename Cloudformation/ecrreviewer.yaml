@@ -60,8 +60,10 @@ Resources:
               - Effect: Allow
                 Action:
                   - 's3:GetObject'
+                  - 'ecr:GetAuthorizationToken'
                 Resource:
                   - 'arn:aws:s3:::fiftheyeecrtest/*'
+                  - '*'
     Metadata:
       'AWS::CloudFormation::Designer':
         id: dd4d8a24-07ae-48c7-8934-ce09ec997543
