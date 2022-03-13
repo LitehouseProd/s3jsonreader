@@ -51,5 +51,7 @@ def getFile(Bucket, file):
             secret = get_secret_value_response['SecretString']
         else:
             decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
-            
-    s3.Object(Bucket, file).download_file('/tmp/test.json') 
+    
+    location = "/tmp/"+file
+    s3.Object(Bucket, file).download_file(location)
+    return location
