@@ -47,8 +47,8 @@ jobs:
       - run:
           name: Run Tests
           command: |
-           mkdir test-results
-          pytest --junitxml=test-results/junit.xml -rA ./python/tests.py
+            mkdir test-results
+            pytest --junitxml=test-results/junit.xml -rA ./python/tests.py
       - store_test_results:
           path: test-results
       - store_artifacts:
