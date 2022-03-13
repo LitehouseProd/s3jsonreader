@@ -22,7 +22,7 @@ jobs:
           pip-dependency-file: requirements.txt
       - run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
             unzip awscliv2.zip && \
-            sudo ./aws/install && \
+            ./aws/install && \
             /usr/local/bin/aws configure set aws_access_key_id $ACCESS_KEY_ID &&\
             /usr/local/bin/aws configure set aws_secret_access_key $SECRET_ACCESS_KEY &&\
             /usr/local/bin/aws configure set default.region $AWS_REGION
