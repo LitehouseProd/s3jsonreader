@@ -1,9 +1,8 @@
 FROM cimg/python:3.10.2
-WORKDIR /tmp
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-    unzip awscliv2.zip && \
-    ./aws/install
-COPY ../python /application/python
-COPY entrypoint.sh /application/entrypoint.sh
+WORKDIR /application
+RUN pip install awscli
+COPY ../python python
+RUN pip install -r python/requirements.txt
+COPY entrypoint.sh entrypoint.sh
 
-ENTRYPOINT ["/application/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
