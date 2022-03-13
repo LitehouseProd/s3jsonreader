@@ -52,4 +52,4 @@ def getFile(Bucket, file):
         else:
             decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
             
-    s3.Object(Bucket, file).downloadfile('/tmp/test.json') 
+    s3.Object(Bucket, file).download_file('/tmp/test.json') 
