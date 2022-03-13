@@ -1,4 +1,4 @@
-from s3Reader import getAllinfo, readFile, getLocation;
+from s3reader import getAllinfo, readFile, getLocation;
 import getCreds;
 import pytest;
 import json
