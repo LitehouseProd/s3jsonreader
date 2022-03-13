@@ -23,9 +23,10 @@ def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
         data = json.load(read_file)
         print("file is read")
-        get_all_keys(data)
+        return data
         
 
 sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
 file = getFile(sourceArray[2], sourceArray[3])
-readFile(file)
+contents = readFile(file)
+get_all_keys(contents)
