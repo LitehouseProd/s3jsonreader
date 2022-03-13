@@ -1,0 +1,8 @@
+version 3.0
+services:
+  s3Reader:
+    container_name: "jsonReaderWill"
+    image:
+    environment:
+      - ACCESS_KEY_ID:
+      - SECRET_ACCESS_KEY:
