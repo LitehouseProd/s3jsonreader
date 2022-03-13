@@ -7,14 +7,14 @@ def getLocation(url):
     source=url.split('/')
     return source
 
-def get_all_keys(Dict):
+def get_all_keys(info):
     print("get_all_keys?")
-    for key, value in Dict.items():
+    for key, value in info.items():
             yield key
             print(key)
             if key == 'message':
                 print("if")
-                print(Dict['message'])
+                print(info['message'])
             elif isinstance(value, dict):
                 print("elif")
                 yield from get_all_keys(value)
