@@ -5,7 +5,7 @@ from botocore.exceptions import ClientError
 s3 = boto3.resource('s3')
 def getFile(Bucket, file):
 
-    secret_name = "arn:aws:secretsmanager:us-east-1:576159180057:secret:/ecrrievewer/credntials/ecrreviewer-kocWqi"
+    secret_name = "arn:aws:secretsmanager:us-east-1:576159180057:secret:/ecrrievewer/credntials-V9p38o"
     region_name = "us-east-1"
 
     # Create a Secrets Manager client
@@ -14,10 +14,6 @@ def getFile(Bucket, file):
         service_name='secretsmanager',
         region_name=region_name
     )
-
-    # In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
-    # See https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-    # We rethrow the exception by default.
 
     try:
         get_secret_value_response = client.get_secret_value(

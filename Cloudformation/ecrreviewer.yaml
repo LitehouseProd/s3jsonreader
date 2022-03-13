@@ -15,7 +15,7 @@ Metadata:
         width: 60
         height: 60
       position:
-        x: 460
+        x: 450
         'y': 180
       z: 1
       embeds: []
@@ -24,18 +24,27 @@ Metadata:
         width: 60
         height: 60
       position:
-        x: 760
+        x: 750
         'y': 180
-      z: 0
+      z: 1
       embeds: []
     1d5e977d-b34f-41da-bd7e-91d2389c444c:
       size:
         width: 60
         height: 60
       position:
-        x: 887
-        'y': 179
-      z: 0
+        x: 900
+        'y': 180
+      z: 1
+      embeds: []
+    179010f3-9d1b-49ce-ad13-0f044feb059e:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 820
+        'y': 180
+      z: 1
       embeds: []
 Resources:
   ecrreviewer:
@@ -51,11 +60,11 @@ Resources:
               - Effect: Allow
                 Action:
                   - 's3:GetObject'
-                Resource: 'arn:aws:s3:::fiftheyeecrtest/*'
+                Resource:
+                  - !Ref fiftheyeecrtest'/*'
     Metadata:
       'AWS::CloudFormation::Designer':
         id: dd4d8a24-07ae-48c7-8934-ce09ec997543
-  
   ecraccesskey:
     Type: 'AWS::IAM::AccessKey'
     Properties:
@@ -64,25 +73,26 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: a6b671b7-d2c2-4d79-a58d-d7c65b8417ef
-        
   ecrCredentialsStored:
-    Type: AWS::SecretsManager::Secret
+    Type: 'AWS::SecretsManager::Secret'
     Properties:
-      Name: !Sub /ecrrievewer/credntials/${ecrreviewer}
-      SecretString: !Sub '{"ACCESS_KEY":"${ecraccesskey}","SECRET_KEY":"${ecraccesskey.SecretAccessKey}"}'
-    
+      Name: 'ecrrievewer/credntials'
+      SecretString: !Sub >-
+        {"ACCESS_KEY":"${ecraccesskey}","SECRET_KEY":"${ecraccesskey.SecretAccessKey}"}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 179010f3-9d1b-49ce-ad13-0f044feb059e
   fiftheyeecrtest:
     Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: 'fiftheyeecrtest'
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 91cb96a1-cdba-4270-b623-857a0412e3b4
-
   ecrjsontest:
-    Type: 'AWS::ECR::PublicRepository'
+    Type: 'AWS::ECR::Repository'
     Properties:
       RepositoryName: ecrjsontest
-      RepositoryCatalogData:
-        UsageText: Read contents of property named message in json file
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 1d5e977d-b34f-41da-bd7e-91d2389c444c

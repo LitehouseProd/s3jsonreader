@@ -2,24 +2,28 @@ from s3reader import getAllkeys, readFile, getLocation;
 import getCreds;
 import pytest;
 import json
+import os
+
+file1 = os.path.join(os.path.dirname(__file__), 'jsonfile/test.json')
+file2 = os.path.join(os.path.dirname(__file__), 'jsonfile/test2.json')
 
 def testread():
-    with open('jsonfile/test.json','r') as readfile:
+    with open(file1,'r') as readfile:
         data = json.load(readfile)
         assert getAllkeys(data) == 'Hello, World!'
     
 def testRead2():
-    with open('jsonfile/test2.json','r') as readfile:
+    with open(file2,'r') as readfile:
         data = json.load(readfile)
         assert getAllkeys(data) == 'Hello, World!'
 
 def testLoad():
-    with open('jsonfile/test.json','r') as readfile:
+    with open(file1,'r') as readfile:
         data = json.load(readfile)
         assert readFile('../jsonfile/test.json') == data
 
 def testLoad2():
-    with open('jsonfile/test2.json','r') as readfile:
+    with open(file2,'r') as readfile:
         data = json.load(readfile)
         assert readFile('../jsonfile/test2.json') == data
 
