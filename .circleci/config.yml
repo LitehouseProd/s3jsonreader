@@ -30,7 +30,10 @@ jobs:
           aws-region: AWS_REGION
           aws-secret-access-key: SECRET_ACCESS_KEY 
       - run:
-          name: Run tests
+          name: Run Tests
+          command: pytest
+      - run:
+          name: Run script
           command: python3 ./python/s3reader.py $S3_URI
 
 
