@@ -29,9 +29,6 @@ jobs:
       - run:
           command: aws cloudformation deploy --stack $STACK_NAME --template Cloudformation/ecrreviewer.yaml --parameter-overrides ImageTag=${CIRCLE_SHA1}
           name: deploy stack
-      - run:
-          command: aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
-          name: Wait until Stack is updated
   build-and-test: 
     docker:
       - image: cimg/python:3.10.2
@@ -50,6 +47,11 @@ jobs:
       - run:
           name: Run Tests
           command: pytest ./python/tests.py
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: trl
       - run:
           name: Run script
           command: python3 ./python/main.py $S3_URI
