@@ -8,6 +8,7 @@ def getLocation(url):
     return source
 
 def get_all_keys(Dict):
+    print("get_all_keys?")
     for key, value in Dict.items():
             yield key
             print(key)
@@ -21,6 +22,7 @@ def get_all_keys(Dict):
 def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
         data = json.load(read_file)
+        print("file is read")
         get_all_keys(data)
         
 
