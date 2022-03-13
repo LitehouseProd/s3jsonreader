@@ -1,11 +1,8 @@
 import boto3;
+import subprocess;
 import json;
-from getCreds import get_secret;
+from getCreds import getFile;
 
-s3 = boto3.resource('s3')
-
-def getFile(Bucket, file):
-    s3.Object(Bucket, file).downloadfile('/tmp/test.json')
 
 def getLocation(url):
     source=url.split('/')
@@ -13,3 +10,4 @@ def getLocation(url):
 
 sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test.json')
 getFile(sourceArray[2], sourceArray[3])
+subprocess.run(["ls", "/tmp"])

@@ -2,8 +2,8 @@ import boto3
 import base64
 from botocore.exceptions import ClientError
 
-
-def get_secret():
+s3 = boto3.resource('s3')
+def getFile(Bucket, file):
 
     secret_name = "arn:aws:secretsmanager:us-east-1:576159180057:secret:/ecrrievewer/credntials/ecrreviewer-kocWqi"
     region_name = "us-east-1"
@@ -52,4 +52,4 @@ def get_secret():
         else:
             decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
             
-    # Your code goes here. 
+    s3.Object(Bucket, file).downloadfile('/tmp/test.json') 
