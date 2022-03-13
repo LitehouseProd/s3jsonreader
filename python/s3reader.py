@@ -13,10 +13,10 @@ def readFile(fileLocation):
         for i in data.items():
             if type(i) is dict:
                 for j in i.items():
-                    if j is 'message':
+                    if j == 'message':
                         print(j['message'])
             else:
-                if i is 'message':
+                if i == 'message':
                     print(i['message'])
 
 sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
