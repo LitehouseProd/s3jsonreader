@@ -12,9 +12,8 @@ def readFile(fileLocation):
 
 def getAllkeys(info):
     for key, value in info.items():
-        print(key)
         if key == 'message':
-            return("Hello")
+            return(value)
         elif isinstance(value, dict):
             return getAllkeys(value)
 
