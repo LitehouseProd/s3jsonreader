@@ -1,4 +1,4 @@
-from s3reader import getAllinfo, readFile, getLocation;
+from s3reader import getAllkeys, readFile, getLocation;
 import getCreds;
 import pytest;
 import json
@@ -6,12 +6,12 @@ import json
 def testread():
     with open('../jsonfile/test.json','r') as readfile:
         data = json.load(readfile)
-        assert getAllinfo(data) == 'Hello, World!'
+        assert getAllkeys(data) == 'Hello, World!'
     
 def testRead2():
     with open('../jsonfile/test2.json','r') as readfile:
         data = json.load(readfile)
-        assert getAllinfo(data) == 'Hello, World!'
+        assert getAllkeys(data) == 'Hello, World!'
 
 def testLoad():
     with open('../jsonfile/test.json','r') as readfile:

@@ -1,7 +1,4 @@
-import subprocess;
-import sys, getopt
 import json;
-from getCreds import getFile;
 
 
 def getLocation(url):
@@ -19,11 +16,4 @@ def getAllkeys(info):
             return(value)
         elif isinstance(value, dict):
             return getAllkeys(value)
-
-sourceFile = sys.argv[1]
-sourceArray = getLocation(sourceFile)
-file = getFile(sourceArray[2], sourceArray[3])
-data = readFile(file)
-message = getAllkeys(data)
-print(message)
 

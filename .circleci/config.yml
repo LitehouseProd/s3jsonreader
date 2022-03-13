@@ -34,7 +34,7 @@ jobs:
           command: pytest ./python/tests.py
       - run:
           name: Run script
-          command: python3 ./python/s3reader.py $S3_URI
+          command: python3 ./python/main.py $S3_URI
 
 
 workflows:
