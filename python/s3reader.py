@@ -14,9 +14,7 @@ def getAllkeys(info):
     for key, value in info.items():
         print(key)
         if key == 'message':
-            print("value = "+value)
-            print("key = "+key)
-            return(value)
+            return("Hello")
         elif isinstance(value, dict):
             return getAllkeys(value)
 
