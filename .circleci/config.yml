@@ -24,12 +24,13 @@ jobs:
           name: Run tests
           command: python3 ./python/s3reader.py
 
+
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  build_and_push: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - deploy:
+      - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           aws-access-key-id: ACCESS_KEY_ID
           aws-secret-access-key: SECRET_ACCESS_KEY
