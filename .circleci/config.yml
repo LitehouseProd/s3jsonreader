@@ -11,6 +11,25 @@ orbs:
 
 
 jobs:
+  cloudformation:
+    docker:
+      - image: cimg/python:3.10.2
+    resource_class: medium
+    steps:
+      - checkout
+      - aws-cli/setup:
+          override-installed: true
+          aws-access-key-id: ACCESS_KEY_ID 
+          aws-region: AWS_REGION
+          aws-secret-access-key: SECRET_ACCESS_KEY 
+      - run:
+          command:
+          aws cloudformation deploy --stack $STACK_NAME --template Cloudformation/ecrreviewer.yaml --parameter-overrides ImageTag=${CIRCLE_SHA1}
+          name: deploy stack
+      - run:
+          command:
+          aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
+          name: Wait until Stack is updated
   build-and-test: 
     docker:
       - image: cimg/python:3.10.2
@@ -21,19 +40,17 @@ jobs:
           pkg-manager: pip
           app-dir: ./python
           pip-dependency-file: requirements.txt
-      - aws-cli/install:
-          override-installed: true
       - aws-cli/setup:
-          override-installed: false 
+          override-installed: true
           aws-access-key-id: ACCESS_KEY_ID 
           aws-region: AWS_REGION
           aws-secret-access-key: SECRET_ACCESS_KEY 
       - run:
-          name: Run script
-          command: python3 ./python/main.py $S3_URI
-      - run:
           name: Run Tests
           command: pytest ./python/tests.py
+      - run:
+          name: Run script
+          command: python3 ./python/main.py $S3_URI
 
 
 workflows:
