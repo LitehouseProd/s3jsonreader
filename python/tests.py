@@ -1,5 +1,4 @@
 from s3reader import getAllkeys, readFile, getLocation;
-import getCreds;
 import pytest;
 import json
 import os
