@@ -19,14 +19,13 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
           app-dir: ./python
-          pip-dependency-file: requirements.txt 
+          pip-dependency-file: requirements.txt
+      - run: aws configure set aws_access_key_id ACCESS_KEY_ID &&\
+            aws configure set aws_secret_access_key SECRET_ACCESS_KEY &&\
+            aws configure set default.region AWS_REGION
       - run:
           name: Run tests
-          command:
-            aws configure set aws_access_key_id ACCESS_KEY_ID
-            aws configure set aws_secret_access_key SECRET_ACCESS_KEY
-            aws configure set default.region AWS_REGION
-            python3 ./python/s3reader.py
+          command: python3 ./python/s3reader.py
 
 
 workflows:
