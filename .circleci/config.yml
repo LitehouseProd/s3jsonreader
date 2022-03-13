@@ -21,11 +21,11 @@ jobs:
           app-dir: ./python
           pip-dependency-file: requirements.txt
       - run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
-            unzip awscliv2.zip && pwd &&\
-            /home/circleci/project/aws/install && \
-            /usr/local/bin/aws configure set aws_access_key_id $ACCESS_KEY_ID &&\
-            /usr/local/bin/aws configure set aws_secret_access_key $SECRET_ACCESS_KEY &&\
-            /usr/local/bin/aws configure set default.region $AWS_REGION
+            unzip awscliv2.zip
+      - run: sudo /home/circleci/project/aws/install
+      - run: /usr/local/bin/aws configure set aws_access_key_id $ACCESS_KEY_ID
+      - run: /usr/local/bin/aws configure set aws_secret_access_key $SECRET_ACCESS_KEY
+      - run: /usr/local/bin/aws configure set default.region $AWS_REGION
       - run:
           name: Run tests
           command: python3 ./python/s3reader.py
