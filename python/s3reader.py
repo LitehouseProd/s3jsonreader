@@ -10,9 +10,12 @@ def getLocation(url):
 def get_all_keys(Dict):
     for key, value in Dict.items():
             yield key
+            print(key)
             if key == 'message':
+                print("if")
                 print(Dict['message'])
             elif isinstance(value, dict):
+                print("elif")
                 yield from get_all_keys(value)
 
 def readFile(fileLocation):
