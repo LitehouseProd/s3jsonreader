@@ -55,6 +55,7 @@ workflows:
   build_and_push: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+      - cloudformation
       - build-and-test
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
