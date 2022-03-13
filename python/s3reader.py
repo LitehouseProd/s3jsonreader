@@ -20,7 +20,7 @@ def getAllkeys(info):
         elif isinstance(value, dict):
             return getAllkeys(value)
 
-def input():
+def input(argv):
     try:
         args = getopt.getopt(argv)
     except getopt.GetoptError:
@@ -28,7 +28,7 @@ def input():
     return args    
 
 
-sourceFile = input()
+sourceFile = input(sys.argv[1])
 sourceArray = getLocation(sourceFile)
 file = getFile(sourceArray[2], sourceArray[3])
 readFile(file)
