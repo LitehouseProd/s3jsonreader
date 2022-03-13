@@ -13,6 +13,7 @@ def readFile(fileLocation):
 def getAllkeys(info):
     for key, value in info.items():
         if key == 'message':
+            print(value)
             return(value)
         elif isinstance(value, dict):
             return getAllkeys(value)
