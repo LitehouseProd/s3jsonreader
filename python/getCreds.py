@@ -15,10 +15,6 @@ def getFile(Bucket, file):
         region_name=region_name
     )
 
-    # In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
-    # See https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-    # We rethrow the exception by default.
-
     try:
         get_secret_value_response = client.get_secret_value(
             SecretId=secret_name

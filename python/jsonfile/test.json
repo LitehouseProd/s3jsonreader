@@ -4,6 +4,7 @@
     2,
     3
   ],
+  "message": "Hello, World!",
   "boolean": true,
   "color": "gold",
   "null": null,
@@ -11,6 +12,5 @@
   "object": {
     "a": "b",
     "c": "d"
-  },
-  "message": "Hello, World!"
+  }
 }

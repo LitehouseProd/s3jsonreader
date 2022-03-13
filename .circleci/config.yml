@@ -10,7 +10,6 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.3
 
 
-
 jobs:
   build-and-test: 
     docker:
@@ -30,8 +29,11 @@ jobs:
           aws-region: AWS_REGION
           aws-secret-access-key: SECRET_ACCESS_KEY 
       - run:
-          name: Run tests
-          command: python3 ./python/s3reader.py $S3_URI
+          name: Run script
+          command: python3 ./python/main.py $S3_URI
+      - run:
+          name: Run Tests
+          command: pytest ./python/tests.py
 
 
 workflows:
@@ -56,4 +58,4 @@ workflows:
             - build-and-test
           filters:
             branches:
-              only: ecr-deployment-testing
+              only: main
