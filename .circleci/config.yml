@@ -23,12 +23,10 @@ jobs:
           aws-region: AWS_REGION
           aws-secret-access-key: SECRET_ACCESS_KEY 
       - run:
-          command:
-          aws cloudformation deploy --stack $STACK_NAME --template Cloudformation/ecrreviewer.yaml --parameter-overrides ImageTag=${CIRCLE_SHA1}
+          command: aws cloudformation deploy --stack $STACK_NAME --template Cloudformation/ecrreviewer.yaml --parameter-overrides ImageTag=${CIRCLE_SHA1}
           name: deploy stack
       - run:
-          command:
-          aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
+          command: aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
           name: Wait until Stack is updated
   build-and-test: 
     docker:
