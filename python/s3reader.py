@@ -22,7 +22,6 @@ def getAllkeys(info):
 
 sourceFile = sys.argv[1]
 sourceArray = getLocation(sourceFile)
-print(sourceArray)
 file = getFile(sourceArray[2], sourceArray[3])
 data = readFile(file)
 message = getAllkeys(data)
