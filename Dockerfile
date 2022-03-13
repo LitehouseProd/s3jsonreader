@@ -7,6 +7,8 @@ COPY ./python/getCreds.py python/getCreds.py
 COPY ./python/requirements.txt python/requirements.txt
 RUN pip install -r python/requirements.txt
 COPY entrypoint.sh entrypoint.sh
+RUN whoami
+USER root
 RUN chmod +X entrypoint.sh
 RUN chown 777 entrypoint.sh
 
