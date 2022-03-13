@@ -18,7 +18,7 @@ def readFile(fileLocation):
         data = json.load(read_file)
         for i in get_all_keys(data):
             if i == 'message':
-                print(i['message'])
+                print(i)
         
 
 sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
