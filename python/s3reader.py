@@ -28,7 +28,7 @@ def input(argv):
     return args    
 
 
-sourceFile = input(sys.argv[1])
+sourceFile = input(sys.argv[1:])
 sourceArray = getLocation(sourceFile)
 file = getFile(sourceArray[2], sourceArray[3])
 readFile(file)
