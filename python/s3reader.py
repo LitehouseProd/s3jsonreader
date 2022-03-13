@@ -17,6 +17,6 @@ def readFile(fileLocation):
         #                 print(j['message'])
         print(data['message'])
 
-sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test.json')
+sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
 file = getFile(sourceArray[2], sourceArray[3])
 readFile(file)
