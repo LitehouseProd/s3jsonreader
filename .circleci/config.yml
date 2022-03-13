@@ -46,7 +46,9 @@ jobs:
           aws-secret-access-key: SECRET_ACCESS_KEY 
       - run:
           name: Run Tests
-          command: pytest -rA ./python/tests.py > test-results
+          command: |
+           mkdir test-results
+          pytest --junitxml=test-results/junit.xml -rA ./python/tests.py
       - store_test_results:
           path: test-results
       - store_artifacts:
