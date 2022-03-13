@@ -10,15 +10,15 @@ def getLocation(url):
 def get_all_keys(Dict):
     for key, value in Dict.items():
             yield key
-            if isinstance(value, dict):
+            if key == 'message':
+                print(Dict['message'])
+            elif isinstance(value, dict):
                 yield from get_all_keys(value)
 
 def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
         data = json.load(read_file)
-        for i in get_all_keys(data):
-            if i == 'message':
-                print(i)
+        get_all_keys(data)
         
 
 sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
