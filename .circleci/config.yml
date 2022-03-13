@@ -20,9 +20,12 @@ jobs:
           pkg-manager: pip
           app-dir: ./python
           pip-dependency-file: requirements.txt
-      - run: aws configure set aws_access_key_id ACCESS_KEY_ID &&\
-            aws configure set aws_secret_access_key SECRET_ACCESS_KEY &&\
-            aws configure set default.region AWS_REGION
+      - run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
+            unzip awscliv2.zip &&
+            sudo ./aws/install
+      - run: aws configure set aws_access_key_id $ACCESS_KEY_ID &&\
+            aws configure set aws_secret_access_key $SECRET_ACCESS_KEY &&\
+            aws configure set default.region $AWS_REGION
       - run:
           name: Run tests
           command: python3 ./python/s3reader.py
