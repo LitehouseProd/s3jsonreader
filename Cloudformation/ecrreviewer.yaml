@@ -95,6 +95,7 @@ Resources:
     Type: 'AWS::ECR::Repository'
     Properties:
       RepositoryName: ecrjsontest
+      ImageTagMutability: MUTABLE
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 1d5e977d-b34f-41da-bd7e-91d2389c444c
