@@ -11,7 +11,7 @@ def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
         data = json.load(read_file)
         print("file is read")
-        return data
+        getAllkeys(data)
 
 def getAllkeys(info):
     print("get_all_keys?")
@@ -22,12 +22,9 @@ def getAllkeys(info):
             print(value)
         elif isinstance(value, dict):
             print("elif")
-            yield from getAllkeys(value)
+            return getAllkeys(value)
         
 
 sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json')
 file = getFile(sourceArray[2], sourceArray[3])
-contents = readFile(file)
-print("got data")
-getAllkeys(contents)
-print("got keys")
+readFile(file)
