@@ -10,18 +10,13 @@ def getLocation(url):
 def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
         data = json.load(read_file)
-        print("file is read")
         getAllkeys(data)
 
 def getAllkeys(info):
-    print("get_all_keys?")
     for key, value in info.items():
-        print(key)
         if key == 'message':
-            print("if")
             print(value)
         elif isinstance(value, dict):
-            print("elif")
             return getAllkeys(value)
         
 
