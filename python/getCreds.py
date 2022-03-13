@@ -5,7 +5,7 @@ from botocore.exceptions import ClientError
 s3 = boto3.resource('s3')
 def getFile(Bucket, file):
 
-    secret_name = "arn:aws:secretsmanager:us-east-1:576159180057:secret:ecrrievewer/credntials-V9p38o"
+    secret_name = "arn:aws:secretsmanager:us-east-1:576159180057:secret:ecrrievewer/credntials-1goCwB"
     region_name = "us-east-1"
 
     # Create a Secrets Manager client
