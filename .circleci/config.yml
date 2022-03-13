@@ -17,6 +17,10 @@ jobs:
     resource_class: medium
     steps:
       - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          app-dir: ./python
+          pip-dependency-file: requirements.txt
       - aws-cli/setup:
           override-installed: true
           aws-access-key-id: ACCESS_KEY_ID 
