@@ -7,7 +7,7 @@ def getLocation(url):
     source=url.split('/')
     return source
 
-def get_all_keys(info):
+def getAllkeys(info):
     print("get_all_keys?")
     for key, value in info.items():
             yield key
@@ -17,7 +17,7 @@ def get_all_keys(info):
                 print(info['message'])
             elif isinstance(value, dict):
                 print("elif")
-                yield from get_all_keys(value)
+                yield from getAllkeys(value)
 
 def readFile(fileLocation):
     with open(fileLocation, "r") as read_file:
@@ -30,5 +30,5 @@ sourceArray = getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.jso
 file = getFile(sourceArray[2], sourceArray[3])
 contents = readFile(file)
 print("got data")
-get_all_keys(contents)
+getAllkeys(contents)
 print("got keys")
