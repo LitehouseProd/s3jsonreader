@@ -1,5 +1,5 @@
 from s3reader import getAllkeys, readFile, getLocation;
-import getCreds;
+from getCreds import getFile;
 import pytest;
 import json
 import os
@@ -29,3 +29,6 @@ def testLoad2():
 
 def testURLParse():
     assert getLocation('s3://ecr-test-fiftheyeecrtest-1cc7embghgf27/test2.json') == ['s3:', '', 'ecr-test-fiftheyeecrtest-1cc7embghgf27', 'test2.json']
+
+def testgetFile():
+    assert getFile('fiftheyeecrtest','test2.json') == "/tmp/test2.json"

@@ -11,6 +11,24 @@ orbs:
 
 
 jobs:
+  cloudformation:
+    docker:
+      - image: cimg/python:3.10.2
+    resource_class: medium
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          app-dir: ./python
+          pip-dependency-file: requirements.txt
+      - aws-cli/setup:
+          override-installed: true
+          aws-access-key-id: ACCESS_KEY_ID 
+          aws-region: AWS_REGION
+          aws-secret-access-key: SECRET_ACCESS_KEY 
+      - run:
+          command: aws cloudformation deploy --stack $STACK_NAME --template Cloudformation/ecrreviewer.yaml --parameter-overrides ImageTag=${CIRCLE_SHA1}
+          name: deploy stack
   build-and-test: 
     docker:
       - image: cimg/python:3.10.2
@@ -21,25 +39,31 @@ jobs:
           pkg-manager: pip
           app-dir: ./python
           pip-dependency-file: requirements.txt
-      - aws-cli/install:
-          override-installed: true
       - aws-cli/setup:
-          override-installed: false 
+          override-installed: true
           aws-access-key-id: ACCESS_KEY_ID 
           aws-region: AWS_REGION
           aws-secret-access-key: SECRET_ACCESS_KEY 
       - run:
+          name: Run Tests
+          command: |
+            mkdir test-results
+            pytest --junitxml=test-results/junit.xml -rA ./python/tests.py
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: trl
+      - run:
           name: Run script
           command: python3 ./python/main.py $S3_URI
-      - run:
-          name: Run Tests
-          command: pytest ./python/tests.py
 
 
 workflows:
   build_and_push: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+      - cloudformation
       - build-and-test
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL

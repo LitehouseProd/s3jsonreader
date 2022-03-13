@@ -61,7 +61,7 @@ Resources:
                 Action:
                   - 's3:GetObject'
                 Resource:
-                  - !Ref fiftheyeecrtest'/*'
+                  - 'arn:aws:s3:::fiftheyeecrtest/*'
     Metadata:
       'AWS::CloudFormation::Designer':
         id: dd4d8a24-07ae-48c7-8934-ce09ec997543
