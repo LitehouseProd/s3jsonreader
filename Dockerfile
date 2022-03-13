@@ -8,7 +8,7 @@ COPY ./python/requirements.txt python/requirements.txt
 RUN pip install -r python/requirements.txt
 COPY entry.sh entrypoint.sh
 USER root
-RUN chmod +X entrypoint.sh
+RUN chmod +x entrypoint.sh
 RUN chmod 777 entrypoint.sh
 RUN chown circleci. entrypoint.sh
 USER circleci
