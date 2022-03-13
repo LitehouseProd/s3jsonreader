@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    a6b671b7-d2c2-4d79-a58d-d7c65b8417ef:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 660
+        'y': 180
+      z: 1
+      embeds: []
+    dd4d8a24-07ae-48c7-8934-ce09ec997543:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 460
+        'y': 180
+      z: 1
+      embeds: []
+    91cb96a1-cdba-4270-b623-857a0412e3b4:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 760
+        'y': 180
+      z: 0
+      embeds: []
+    1d5e977d-b34f-41da-bd7e-91d2389c444c:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 887
+        'y': 179
+      z: 0
+Resources:
+  ecrreviewer:
+    Type: 'AWS::IAM::User'
+    Properties:
+      Path: /
+      Policies:
+        - PolicyName: ecr_test_access
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 's3:GetObject'
+                Resource: 'arn:aws:s3:::fiftheyeecrtest/*'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: dd4d8a24-07ae-48c7-8934-ce09ec997543
+  ecraccesskey:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref ecrreviewer
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: a6b671b7-d2c2-4d79-a58d-d7c65b8417ef
+  fiftheyeecrtest:
+    Type: 'AWS::S3::Bucket'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 91cb96a1-cdba-4270-b623-857a0412e3b4
+  ecrjsontest:
+    Type: 'AWS::ECR::PublicRepository'
+    Properties:
+      RepositoryName: ecrjsontest
+      RepositoryCatalogData:
+        UsageText: "Read contents of property named message in json file"
+        RepositoryDecription: "Read contents of property named message in json file"
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 1d5e977d-b34f-41da-bd7e-91d2389c444c
