@@ -8,6 +8,5 @@ COPY ./python/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY entry.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
-RUN chmod 777 entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
