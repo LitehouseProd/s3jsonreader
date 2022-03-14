@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 FILE_URI=$1

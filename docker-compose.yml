@@ -3,4 +3,4 @@ services:
   s3Reader:
     container_name: "jsonReaderWill"
     image: 576159180057.dkr.ecr.us-east-1.amazonaws.com/ecrjsontest:latest
-    command: [s3://fiftheyeecrtest/test.json,$aws_access_key_id,$aws_secret_access_key]
+    command: [s3://fiftheyeecrtest/test.json, $aws_access_key_id, $aws_secret_access_key]
