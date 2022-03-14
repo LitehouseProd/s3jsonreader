@@ -60,10 +60,19 @@ Resources:
               - Effect: Allow
                 Action:
                   - 's3:GetObject'
-                  - 'ecr:GetAuthorizationToken'
                 Resource:
                   - 'arn:aws:s3:::fiftheyeecrtest/*'
+
+              - Effect: Allow
+                Action:
+                  - 'ecr:GetAuthorizationToken'
+                Resource:
                   - '*'
+              - Effect: Allow
+                Action:
+                  - 'secretsmanager:GetSecretValue'
+                Resource:
+                  - 'arn:aws:secretsmanager:us-east-1:576159180057:secret:ecrrievewer/credntials-1goCwB'
     Metadata:
       'AWS::CloudFormation::Designer':
         id: dd4d8a24-07ae-48c7-8934-ce09ec997543
