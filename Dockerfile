@@ -9,6 +9,5 @@ RUN pip install -r requirements.txt
 COPY entry.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 RUN chmod 777 entrypoint.sh
-RUN chown circleci. entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]

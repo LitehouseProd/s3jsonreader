@@ -41,9 +41,9 @@ jobs:
           pip-dependency-file: requirements.txt
       - aws-cli/setup:
           override-installed: true
-          aws-access-key-id: ACCESS_KEY_ID 
+          aws-access-key-id: ACCESS_KEY_ID_S3
           aws-region: AWS_REGION
-          aws-secret-access-key: SECRET_ACCESS_KEY 
+          aws-secret-access-key: SECRET_ACCESS_KEY_S3
       - run:
           name: Run Tests
           command: |
