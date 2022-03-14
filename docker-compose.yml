@@ -3,7 +3,4 @@ services:
   s3Reader:
     container_name: "jsonReaderWill"
     image: 576159180057.dkr.ecr.us-east-1.amazonaws.com/ecrjsontest:latest
-    environment:
-      - ACCESS_KEY_ID= $aws_access_key_id
-      - SECRET_ACCESS_KEY= $aws_secret_access_key
-      - FILE_URI="s3://fiftheyeecrtest/test.json"
+    command: [s3://fiftheyeecrtest/test.json,$aws_access_key_id,$aws_secret_access_key]
